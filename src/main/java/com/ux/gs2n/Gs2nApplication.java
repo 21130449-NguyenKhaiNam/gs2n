@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Gs2nApplication {
 
 	public static void main(String[] args) {
-		System.out.println("Hello world");
+		SpringApplication.run(Gs2nApplication.class, args);
 	}
 
 }
