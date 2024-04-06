@@ -17,4 +17,8 @@ public class Gender implements IGender {
     private String name;
 
     public Gender() {}
+
+    public int getId() {
+        return id;
+    }
 }
