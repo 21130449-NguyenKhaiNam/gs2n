@@ -122,7 +122,9 @@ export default function Header() {
       {/* desktop screen */}
       <div className="header">
         <div>
-          <h1 className="logo">PHIM MOI</h1>
+          <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+            GS2N
+          </Link>
         </div>
 
         <div className="menu">
@@ -180,7 +182,7 @@ export default function Header() {
         className="header-mobile"
       >
         <div className="logo-mobile">
-          <h1>PHIM MOI</h1>
+          <Link to="/">GS2N</Link>
         </div>
 
         {user ? (

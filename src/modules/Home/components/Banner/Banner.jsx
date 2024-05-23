@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import { AiOutlineClose, AiOutlinePlayCircle } from "react-icons/ai";
@@ -14,7 +14,7 @@ import "./banner.scss";
 const TRAILERS = [
   "https://www.youtube.com/watch?v=uoKSzOuPcfY",
   "https://www.youtube.com/watch?v=kBY2k3G6LsM&t",
-  "https://www.youtube.com/watch?v=geMkL-lv2-4&t",
+  "https://youtu.be/t7WC5CJcy58?si=mO0OOiISarWKcmgE",
 ];
 
 export default function Banner() {
@@ -39,9 +39,41 @@ export default function Banner() {
     return { ...banner, trailer: TRAILERS[index] };
   });
 
-  return (
-    <div className="banner">
+  const bannerMap = useMemo(() => {
+    return bannersMapped?.map((banner, index) => (
+      <SwiperSlide key={index}>
+        <img src={banner.hinhAnh} alt={`banner-${banner.maBanner}`} />
+        <button
+          className="banner-icon-play"
+          onClick={() => showModal(banner.trailer)}
+        >
+          <AiOutlinePlayCircle />
+        </button>
+      </SwiperSlide>
+    ));
+  }, [bannersMapped]);
+
+  const CreateSwiper = () => {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const swiperRef = useRef(null);
+
+    useEffect(() => {
+      setIsLoaded(true);
+    }, []);
+
+    const slideToIndex = (index) => {
+      if (swiperRef.current) {
+        swiperRef.current.slideTo(index);
+      }
+    };
+
+    if (!isLoaded) {
+      return <div>Loading...</div>; // Hiển thị một thông báo hoặc spinner trong quá trình tải
+    }
+
+    return (
       <Swiper
+        ref={swiperRef} // Lưu trữ tham chiếu của Swiper vào biến ref
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
@@ -54,23 +86,18 @@ export default function Banner() {
           clickable: true,
         }}
         navigation={true}
+        initialSlide={0}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {bannersMapped?.map((banner, index) => {
-          return (
-            <SwiperSlide key={index}>
-              <img src={banner.hinhAnh} alt={`banner-${banner.maBanner}`} />
-              <button
-                className="banner-icon-play"
-                onClick={() => showModal(banner.trailer)}
-              >
-                <AiOutlinePlayCircle />
-              </button>
-            </SwiperSlide>
-          );
-        })}
+        {bannerMap}
       </Swiper>
+    );
+  };
+
+  return (
+    <div className="banner">
+      <CreateSwiper />
 
       <div style={{ display: isModalOpen ? "block" : "none" }} className="main">
         <div className="banner-overlay" onClick={closeModal}></div>
