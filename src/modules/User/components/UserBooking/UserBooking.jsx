@@ -36,7 +36,13 @@ export default function UserBooking({ userInfo }) {
                   </td>
                   <td>{dayjs(list.ngayDat).format("DD/MM/YYYY")}</td>
                   <td>{list.maVe}</td>
-                  <td>{list?.danhSachGhe.map((item) => item.tenGhe + ", ")}</td>
+                  <td>
+                    {list?.danhSachGhe.map(
+                      (item, index) =>
+                        item.tenGhe +
+                        (index === list?.danhSachGhe.length - 1 ? "" : ", ")
+                    )}
+                  </td>
                   <td>{Number(list.giaVe).toLocaleString()} đ</td>
                   <td>
                     {Number(

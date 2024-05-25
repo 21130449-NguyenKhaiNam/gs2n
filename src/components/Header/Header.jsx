@@ -48,7 +48,7 @@ export default function Header() {
                 </span>
                 <Link
                   style={{ textDecoration: "none", fontWeight: "500" }}
-                  to="/admin"
+                  to="/admin/userList"
                 >
                   Quản trị
                 </Link>
@@ -122,7 +122,7 @@ export default function Header() {
       {/* desktop screen */}
       <div className="header">
         <div>
-          <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
+          <Link to="/" className="logo" style={{ textDecoration: "none" }}>
             GS2N
           </Link>
         </div>

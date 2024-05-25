@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { TitleFunction } from "../../../../utils/TitleFunction";
 import "./movieList.scss";
+import Swal from "sweetalert2";
 
 export default function MovieList() {
   TitleFunction("Movie List");
@@ -28,18 +29,30 @@ export default function MovieList() {
     dispatch(getMovies());
   }, [search]);
 
-  const handleDelete = async (movieId) => {
-    try {
-      await dispatch(deleteMovie(movieId));
-      notification.success({
-        message: "Xóa phim thành công",
-      });
-    } catch (error) {
-      notification.error({
-        message: "Xóa phim thất bại",
-        description: error,
-      });
-    }
+  const handleDelete = (movieId) => {
+    Swal.fire({
+      title: "Bạn có chắc chắn muốn xóa phim?",
+      text: "Bạn sẽ không thể hoàn tác tác vụ này sau này!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Vâng, tôi đồng ý!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await dispatch(deleteMovie(movieId));
+          notification.success({
+            message: "Xóa phim thành công",
+          });
+        } catch (error) {
+          notification.error({
+            message: "Xóa phim thất bại",
+            description: error.toString(),
+          });
+        }
+      }
+    });
   };
 
   const handleEdit = async (movieId) => {

@@ -40,12 +40,15 @@ export default function AddShowTimes() {
   });
 
   const onSubmit = async (values) => {
-    console.log(values);
     try {
       await dispatch(addTheater(values));
       notification.success({
         message: "Thêm lịch chiếu thành công",
       });
+      // Tải lại trang web sau 2 giây
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       notification.error({
         message: "Thêm lịch chiếu thất bại",
@@ -60,7 +63,6 @@ export default function AddShowTimes() {
   };
 
   const handleDateTime = (value) => {
-    console.log(value);
     setValue("ngayChieuGioChieu", dayjs(value).format("DD/MM/YYYY hh:mm:ss"));
   };
 

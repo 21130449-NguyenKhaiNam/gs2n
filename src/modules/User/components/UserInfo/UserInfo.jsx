@@ -12,7 +12,6 @@ export default function UserInfo({ userInfo }) {
   useEffect(() => {
     reset({
       taiKhoan: userInfo?.taiKhoan,
-      matKhau: userInfo?.matKhau,
       email: userInfo?.email,
       soDt: userInfo?.soDT,
       hoTen: userInfo?.hoTen,
@@ -28,7 +27,6 @@ export default function UserInfo({ userInfo }) {
   } = useForm({
     defaultValues: {
       taiKhoan: "",
-      matKhau: "",
       email: "",
       soDt: "",
       hoTen: "",
@@ -74,33 +72,6 @@ export default function UserInfo({ userInfo }) {
               />
               {errors.taiKhoan && (
                 <p className="text-danger">{errors.taiKhoan.message}</p>
-              )}
-            </div>
-
-            {/* mật khẩu */}
-            <div className="form-group mb-3">
-              <label className="form-label">Mật Khẩu</label>
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Mật khẩu"
-                {...register("matKhau", {
-                  required: {
-                    value: true,
-                    message: "Mật khẩu không được để trống",
-                  },
-                  minLength: {
-                    value: 3,
-                    message: "Mật khẩu phải từ 4 đến 8 ký tự",
-                  },
-                  maxLength: {
-                    value: 8,
-                    message: "Mật khẩu phải từ 4 đến 8 ký tự",
-                  },
-                })}
-              />
-              {errors.matKhau && (
-                <p className="text-danger">{errors.matKhau.message}</p>
               )}
             </div>
 

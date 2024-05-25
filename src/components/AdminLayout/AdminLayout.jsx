@@ -77,7 +77,13 @@ export default function AdminLayout() {
           onCollapse={(value) => setCollapsed(value)}
         >
           <div style={{ opacity: collapsed ? 0 : 1 }} className="logo-admin">
-            <h1 className="logo-movie">PHIM MOI</h1>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/"
+              className="logo-movie"
+            >
+              GS2N
+            </Link>
           </div>
 
           <Menu

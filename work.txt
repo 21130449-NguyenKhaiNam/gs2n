@@ -1,3 +1,8 @@
 -v1:
 	+ Điều chỉnh header
 	+ Điều chỉnh banner
+-v2:
+	+ Sửa lỗi hiển thị nội dung cho lịch sử đặt vé
+	+ Hủy bỏ public mật khẩu
+	+ Bổ sung lựa chọn trước khi xóa phim
+	+ Làm mới trang sau khi hiện thực
