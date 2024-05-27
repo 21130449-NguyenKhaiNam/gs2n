@@ -5,6 +5,7 @@ const movieApi = {
     return baseApi.get("QuanLyPhim/LayDanhSachBanner");
   },
 
+  // giang getMovie()
   getMovies: (search) => {
     if (search !== "") {
       return baseApi.get("QuanLyPhim/LayDanhSachPhim", {
@@ -21,6 +22,7 @@ const movieApi = {
     });
   },
 
+  // Giang getMovieDetails()
   getMovieDetails: (movieId) => {
     return baseApi.get("QuanLyPhim/LayThongTinPhim", {
       params: {
