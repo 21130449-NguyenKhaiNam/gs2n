@@ -26,12 +26,6 @@ const items = [
       </Link>,
       "1"
     ),
-    getItem(
-      <Link style={{ textDecoration: "none" }} to="/admin/addUser">
-        Thêm User
-      </Link>,
-      "2"
-    ),
   ]),
   getItem("Phim", "sub2", <SettingOutlined />, [
     getItem(

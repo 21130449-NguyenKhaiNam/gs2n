@@ -1,10 +1,12 @@
 import baseApi from "./baseApi";
 
 const movieApi = {
+  // Lấy banner
   getBanners: () => {
     return baseApi.get("QuanLyPhim/LayDanhSachBanner");
   },
 
+  // Lấy danh sách phim
   getMovies: (search) => {
     if (search !== "") {
       return baseApi.get("QuanLyPhim/LayDanhSachPhim", {
@@ -21,6 +23,7 @@ const movieApi = {
     });
   },
 
+  // Lấy thông tin chi tiết của bộ phim
   getMovieDetails: (movieId) => {
     return baseApi.get("QuanLyPhim/LayThongTinPhim", {
       params: {
@@ -29,6 +32,7 @@ const movieApi = {
     });
   },
 
+  // Thêm một bộ phim vào hệ thống
   addMovie: (movie) => {
     const formData = new FormData();
 
@@ -40,6 +44,7 @@ const movieApi = {
     return baseApi.post("QuanLyPhim/ThemPhimUploadHinh", formData);
   },
 
+  // Loại bỏ một bộ phim khỏi ứng dụng
   deleteMovie: (movieId) => {
     return baseApi.delete("QuanLyPhim/XoaPhim", {
       params: {
@@ -48,6 +53,7 @@ const movieApi = {
     });
   },
 
+  // Cập nhật thông tin cho phim
   updateMovie: (movie) => {
     const formData = new FormData();
 

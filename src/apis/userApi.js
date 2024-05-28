@@ -1,10 +1,12 @@
 import baseApi from "./baseApi";
 
 const userApi = {
+  // Đăng nhập
   login: (values) => {
     return baseApi.post("QuanLyNguoiDung/DangNhap", values);
   },
 
+  // Đăng ký
   register: (values) => {
     return baseApi.post("QuanLyNguoiDung/DangKy", {
       ...values,
@@ -12,6 +14,7 @@ const userApi = {
     });
   },
 
+  // Lấy danh sách user
   getUsers: () => {
     return baseApi.get("QuanLyNguoiDung/LayDanhSachNguoiDung", {
       params: {
@@ -20,10 +23,12 @@ const userApi = {
     });
   },
 
+  // Lấy loại người dùng
   getUserType: () => {
     return baseApi.get("QuanLyNguoiDung/LayDanhSachLoaiNguoiDung");
   },
 
+  // Thêm một người dùng
   addUser: (values) => {
     return baseApi.post("QuanLyNguoiDung/ThemNguoiDung", {
       ...values,
@@ -31,6 +36,7 @@ const userApi = {
     });
   },
 
+  // Loại bỏ một người dùng
   deleteUser: (account) => {
     return baseApi.delete("QuanLyNguoiDung/XoaNguoiDung", {
       params: {
@@ -39,6 +45,7 @@ const userApi = {
     });
   },
 
+  // Lấy thông tin chi tiết của một người dùng
   getUserDetails: (account) => {
     return baseApi.post("/QuanLyNguoiDung/LayThongTinNguoiDung", {
       params: {
@@ -47,6 +54,7 @@ const userApi = {
     });
   },
 
+  // Cập nhật thông tin của người dùng
   updateUser: (values) => {
     console.log(values);
     return baseApi.post("QuanLyNguoiDung/CapNhatThongTinNguoiDung", {
@@ -55,6 +63,7 @@ const userApi = {
     });
   },
 
+  // Cập nhật thông tin người dùng cho local stogare
   updateUserClient: (values) => {
     console.log(values);
     return baseApi.put("QuanLyNguoiDung/CapNhatThongTinNguoiDung", {
@@ -63,6 +72,7 @@ const userApi = {
     });
   },
 
+  // Tìm kiếm người dùng
   searchUser: (value) => {
     return baseApi.get("QuanLyNguoiDung/TimKiemNguoiDung", {
       params: {
@@ -72,6 +82,7 @@ const userApi = {
     });
   },
 
+  // Thông tin tài khoản
   getUserInfo: () => {
     return baseApi.post("QuanLyNguoiDung/ThongTinTaiKhoan");
   },

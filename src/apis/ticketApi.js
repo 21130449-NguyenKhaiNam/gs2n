@@ -1,6 +1,7 @@
 import baseApi from "./baseApi";
 
 const ticketApi = {
+  // Danh sách phòng vé
   getTicketDetails: (ticketId) => {
     return baseApi.get("QuanLyDatVe/LayDanhSachPhongVe", {
       params: {
@@ -9,6 +10,7 @@ const ticketApi = {
     });
   },
 
+  // Tạo lịch chiếu
   addTheater: (showTimes) => {
     return baseApi.post("QuanLyDatVe/TaoLichChieu", showTimes);
   },
